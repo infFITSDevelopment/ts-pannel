@@ -947,10 +947,16 @@
     getPanelInfo();
 
     var mymPanelOffcanvas = document.getElementById("offcanvasBottomPanel");
+    mymPanelOffcanvas.addEventListener("shown.bs.offcanvas", function () {
+      // do something...
+      $("#svgContainer").show();
+      $(".size-btn")[0].click();
+    });
     mymPanelOffcanvas.addEventListener("hidden.bs.offcanvas", function () {
       // do something...
       $("#guideBtn").click();
     });
+
   });
   window.isScrolling = 0;
   document
@@ -1178,7 +1184,7 @@
       if (row_qty_TR == 0) {
         for (k = 0; k < col_qty_TR; k++) {
           $("#th_tr_size_TR--panel").append(
-            '<th id="headerTR' +
+            '<th id="headerTR--panel' +
               k +
               '"><span>' +
               headerdefault[k] +
@@ -1189,16 +1195,16 @@
 
       for (i = 0; i < n_150d; i++) {
         $("#tbody_size_TR--panel").append(
-          '<tr id="rowTR' + row_qty_TR + '" class="150d"></tr > '
+          '<tr id="rowTR--panel' + row_qty_TR + '" class="150d"></tr > '
         );
 
         for (k = 0; k < col_qty_TR; k++) {
-          $("#rowTR" + row_qty_TR).append(
+          $("#rowTR--panel" + row_qty_TR).append(
             '<td id="' +
               row_qty_TR +
               "_" +
               k +
-              'TR" style="height: 30px;"></td>'
+              'TR--panel" style="height: 30px;"></td>'
           );
           if (col_value_TR[k] == null) {
             col_value_TR[k] = [];
@@ -1210,18 +1216,18 @@
 
       for (i = 0; i < n_150; i++) {
         $("#tbody_size_TR--panel").append(
-          '<tr id="rowTR' +
+          '<tr id="rowTR--panel' +
             row_qty_TR +
             '" class="150" style="display:none"></tr > '
         );
 
         for (k = 0; k < col_qty_TR; k++) {
-          $("#rowTR" + row_qty_TR).append(
+          $("#rowTR--panel" + row_qty_TR).append(
             '<td id="' +
               row_qty_TR +
               "_" +
               k +
-              'TR" style="height: 30px;"></td>'
+              'TR--panel" style="height: 30px;"></td>'
           );
           if (col_value_TR[k] == null) {
             col_value_TR[k] = [];
@@ -1233,18 +1239,18 @@
 
       for (i = 0; i < n_160; i++) {
         $("#tbody_size_TR--panel").append(
-          '<tr id="rowTR' +
+          '<tr id="rowTR--panel' +
             row_qty_TR +
             '" class="160" style="display:none"></tr > '
         );
 
         for (k = 0; k < col_qty_TR; k++) {
-          $("#rowTR" + row_qty_TR).append(
+          $("#rowTR--panel" + row_qty_TR).append(
             '<td id="' +
               row_qty_TR +
               "_" +
               k +
-              'TR" style="height: 30px;"></td>'
+              'TR--panel" style="height: 30px;"></td>'
           );
           if (col_value_TR[k] == null) {
             col_value_TR[k] = [];
@@ -1256,18 +1262,18 @@
 
       for (i = 0; i < n_170; i++) {
         $("#tbody_size_TR--panel").append(
-          '<tr id="rowTR' +
+          '<tr id="rowTR--panel' +
             row_qty_TR +
             '" class="170" style="display:none"></tr > '
         );
 
         for (k = 0; k < col_qty_TR; k++) {
-          $("#rowTR" + row_qty_TR).append(
+          $("#rowTR--panel" + row_qty_TR).append(
             '<td id="' +
               row_qty_TR +
               "_" +
               k +
-              'TR" style="height: 30px;"></td>'
+              'TR--panel" style="height: 30px;"></td>'
           );
           if (col_value_TR[k] == null) {
             col_value_TR[k] = [];
@@ -1279,18 +1285,18 @@
 
       for (i = 0; i < n_180u; i++) {
         $("#tbody_size_TR--panel").append(
-          '<tr id="rowTR' +
+          '<tr id="rowTR--panel' +
             row_qty_TR +
             '" class="180u" style="display:none></tr > '
         );
 
         for (k = 0; k < col_qty_TR; k++) {
-          $("#rowTR" + row_qty_TR).append(
+          $("#rowTR--panel" + row_qty_TR).append(
             '<td id="' +
               row_qty_TR +
               "_" +
               k +
-              'TR" style="height: 30px;"></td>'
+              'TR--panel" style="height: 30px;"></td>'
           );
           if (col_value_TR[k] == null) {
             col_value_TR[k] = [];
@@ -2030,16 +2036,17 @@
       //   $(".modal-body").html(sizeGuide);
       // })
     });
-    setTimeout(function () {
-      //initial
-      //let e = new Event(mytap);
-      //document.querySelector('.size-btn').dispatchEvent(e)
-      // $('.garment-svg').css('margin-bottom', $('.garment-svg').width() - $('#svg_imgsrc').width())
+    // setTimeout(function () {
+    //   //initial
+    //   //let e = new Event(mytap);
+    //   //document.querySelector('.size-btn').dispatchEvent(e)
+    //   // $('.garment-svg').css('margin-bottom', $('.garment-svg').width() - $('#svg_imgsrc').width())
 
-      //show at the end of svg display
-      $("#svgContainer").show();
-      $(".size-btn")[0].click();
-    }, 250);
+    //   //show at the end of svg display
+    // FIXME before
+    //   $("#svgContainer").show();
+    //   $(".size-btn")[0].click();
+    // }, 250);
 
     var styles = `
         .svg-container{
