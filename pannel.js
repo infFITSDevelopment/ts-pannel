@@ -949,8 +949,10 @@
     var mymPanelOffcanvas = document.getElementById("offcanvasBottomPanel");
     mymPanelOffcanvas.addEventListener("shown.bs.offcanvas", function () {
       // do something...
+	setTimeout(function () {
       $("#svgContainer").show();
       $(".size-btn")[0].click();
+	}, 250)
     });
     mymPanelOffcanvas.addEventListener("hidden.bs.offcanvas", function () {
       // do something...
