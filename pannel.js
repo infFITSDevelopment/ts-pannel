@@ -949,10 +949,9 @@
     var mymPanelOffcanvas = document.getElementById("offcanvasBottomPanel");
     mymPanelOffcanvas.addEventListener("shown.bs.offcanvas", function () {
       // do something...
-	setTimeout(function () {
-      $("#svgContainer").show();
+      $("#svgContainerPanel").show();
       $(".size-btn")[0].click();
-	}, 250)
+
     });
     mymPanelOffcanvas.addEventListener("hidden.bs.offcanvas", function () {
       // do something...
@@ -1508,8 +1507,8 @@
   //SVG Display
   function svg_display(json_res) {
     function resize_svg(data, Labels) {
-      const svgContainer = document.getElementById("svgContainer");
-      const squaresize = document.getElementById("svgContainer").offsetWidth;
+      const svgContainerPanel = document.getElementById("svgContainerPanel");
+      const squaresize = document.getElementById("svgContainerPanel").offsetWidth;
       function derive_svg_circum(svg_data, a, b, centerX, centerY) {
         // 定义椭圆和直线的属性
         //let a = 150; // 椭圆的长轴半径
@@ -1891,7 +1890,7 @@
         `</svg>`;
 
       // 初始化 SVG
-      svgContainer.innerHTML = svgStructure;
+      svgContainerPanel.innerHTML = svgStructure;
 
       return { data: data, Labels: Labels };
     }
@@ -1908,8 +1907,8 @@
     <div id="SVG-Display" class="d-flex align-items-center justify-content-center" >
         <div >
             <div class='garment-svg' style="margin-bottom: 45px;">
-                <img id="svg_imgsrc"  onerror="this.style.display='none';">
-                <div id='svgContainer'></div>    
+                <img id="svg_imgsrc--panel"  onerror="this.style.display='none';">
+                <div id='svgContainerPanel'></div>    
             </div>
             <div class="size-btn-wrapper" data-labels="${json_res.ChartInfo.Labels}">
             </div>
@@ -1919,7 +1918,7 @@
     );
 
     //svg image
-    $("#svg_imgsrc")[0].src =
+    $("#svg_imgsrc--panel")[0].src =
       "https://www.myinffits.com/images/garment_svgs/" +
       output_svg.data.filename +
       ".svg";
@@ -2005,7 +2004,7 @@
 
         if (output_svg && output_svg.data) {
           output_svg = resize_svg(output_svg.data, output_svg.Labels);
-          $("#svgContainer").find("text").hide().fadeIn();
+          $("#svgContainerPanel").find("text").hide().fadeIn();
           console.log(output_svg, "!!!!!!!!!!!!!!!!!!");
         }
 
@@ -2032,7 +2031,7 @@
 
       //   //show_svg
       //   output_svg = resize_svg(output_svg.data, output_svg.Labels);
-      //   $('#svgContainer').find('text').hide().fadeIn()
+      //   $('#svgContainerPanel').find('text').hide().fadeIn()
       //   console.log(output_svg, "!!!!!!!!!!!!!!!!!!");
       //   var sizeGuide = $(".container").html();
       //   $(".modal-body").html(sizeGuide);
@@ -2042,11 +2041,11 @@
     //   //initial
     //   //let e = new Event(mytap);
     //   //document.querySelector('.size-btn').dispatchEvent(e)
-    //   // $('.garment-svg').css('margin-bottom', $('.garment-svg').width() - $('#svg_imgsrc').width())
+    //   // $('.garment-svg').css('margin-bottom', $('.garment-svg').width() - $('#svg_imgsrc--panel').width())
 
     //   //show at the end of svg display
     // FIXME before
-    //   $("#svgContainer").show();
+    //   $("#svgContainerPanel").show();
     //   $(".size-btn")[0].click();
     // }, 250);
 
@@ -2069,10 +2068,10 @@
             display: flex;
             justify-content: end;
         }
-        #svg_imgsrc{
+        #svg_imgsrc--panel{
             width: 70%;height: 70%;margin: auto;transform: translate(0%, 20%);opacity: 0.5;
         }
-        #svgContainer{
+        #svgContainerPanel{
             position: absolute;width: 100%;height: 100%;top: 0;left: 0; display:none;
         }
         .size-btn-wrapper{
