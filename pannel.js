@@ -278,7 +278,7 @@
   -o-transition: background-color 0.3s ease;
 }
 
-.inf-panel-container .size-btn {
+.inf-panel-container .size-btn--panel {
   cursor: pointer;
   color: rgb(144, 144, 144);
   transition: color 0.3s;
@@ -302,7 +302,7 @@
   -o-border-radius: 13px;
 }
 
-.inf-panel-container .size-btn.selected {
+.inf-panel-container .size-btn--panel.selected {
   color: #000;
   font-weight: 500;
   border: 1px solid #3b3b32;
@@ -314,11 +314,11 @@
   -o-border-radius: 13px;
 }
 
-.inf-panel-container .size-btn.selected:hover {
+.inf-panel-container .size-btn--panel.selected:hover {
   color: rgba(51, 51, 51, 0.75);
 }
 
-/* .size-btn.selected td:first-child {
+/* .size-btn--panel.selected td:first-child {
   background-color: rgba(240, 240, 240, 1);
 } */
 .inf-panel-container .modal-right-top {
@@ -950,7 +950,7 @@
     mymPanelOffcanvas.addEventListener("shown.bs.offcanvas", function () {
       // do something...
       $("#svgContainerPanel").show();
-      $(".size-btn")[0].click();
+      $(".size-btn--panel")[0].click();
 
     });
     mymPanelOffcanvas.addEventListener("hidden.bs.offcanvas", function () {
@@ -1095,7 +1095,7 @@
     });
     table += "</tr></thead><tbody>";
     sizeInfo.forEach(function (size, index) {
-      table += '<tr class="size-btn" data-row-index="' + index + '">';
+      table += '<tr class="size-btn--panel" data-row-index="' + index + '">';
       headers.forEach(function (header) {
         table += "<td>" + size[header] + "</td>";
       });
@@ -1958,7 +1958,7 @@
 
     //size-btn
     // for (let s = 0; s < SizeStringList.length; s++) {
-    //     $('.size-btn-wrapper').append('<div class="size-btn" >' + SizeStringList[s] + '</div>');
+    //     $('.size-btn-wrapper').append('<div class="size-btn--panel" >' + SizeStringList[s] + '</div>');
     // }
     $(document).ready(function () {
       // //     $("table").delegate("td","click",function(){
@@ -1972,15 +1972,15 @@
       // //       console.log('size_active', size_active)
       // //       alert('I am' + size_active);
       // // });
-      $(document).on("click", ".size-btn", function () {
+      $(document).on("click", ".size-btn--panel", function () {
         // 移除所有按钮的 'active' 类
-        $(this).addClass("size-btn");
-        $(".size-btn").removeClass("active");
+        $(this).addClass("size-btn--panel");
+        $(".size-btn--panel").removeClass("active");
         // 为当前点击的按钮添加 'active' 类
         $(this).addClass("active");
         let activeIndex = $(this).index();
         // let size_active = $(this).text();
-        // let activeIndex = $('.size-btn.active').index('.size-btn');
+        // let activeIndex = $('.size-btn--panel.active').index('.size-btn--panel');
         let size_active = $(this).find("td:first").text();
         $("#svg_size--panel").find("span").text(size_active);
         console.log(
@@ -2012,12 +2012,12 @@
         // $(".modal-body").html(sizeGuide);
       });
 
-      // $('.size-btn').on('click', function () {
-      //   $('.size-btn').removeClass('active')
+      // $('.size-btn--panel').on('click', function () {
+      //   $('.size-btn--panel').removeClass('active')
       //   $(this).addClass('active');
       //   //value change
-      //   let activeIndex = $('.size-btn.active').index('.size-btn');
-      //   let size_active = $('.size-btn.active').find('td:first').text();
+      //   let activeIndex = $('.size-btn--panel.active').index('.size-btn--panel');
+      //   let size_active = $('.size-btn--panel.active').find('td:first').text();
 
       //   $('#svg_size--panel').find('span').text(size_active)
 
@@ -2040,13 +2040,13 @@
     // setTimeout(function () {
     //   //initial
     //   //let e = new Event(mytap);
-    //   //document.querySelector('.size-btn').dispatchEvent(e)
+    //   //document.querySelector('.size-btn--panel').dispatchEvent(e)
     //   // $('.garment-svg').css('margin-bottom', $('.garment-svg').width() - $('#svg_imgsrc--panel').width())
 
     //   //show at the end of svg display
     // FIXME before
     //   $("#svgContainerPanel").show();
-    //   $(".size-btn")[0].click();
+    //   $(".size-btn--panel")[0].click();
     // }, 250);
 
     var styles = `
@@ -2102,7 +2102,7 @@
             color:#333;
           }
           
-        .size-btn-wrapper.size-btn.active{
+        .size-btn-wrapper.size-btn--panel.active{
           background: #858585;
           color:white;
         }
